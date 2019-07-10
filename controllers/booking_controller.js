@@ -33,38 +33,33 @@ async function create(req, res) {
 
     // res.json(booking);
 
-  }
-  
-  async function make(req, res) {
-    const userId = req.session.user._id;
-    let user = await UserModel.findById(userId);
-    res.render("pigeon/new", {user});
-  }
-  
-  async function show(req, res) {
-    const userId = req.session.user._id;
-    let user = await UserModel.findById(userId);
-  
+}
+
+async function make(req, res) {
+    res.render("test"); //should render new form
+}
+
+async function show(req, res) {
     let { id } = req.params;
-    let pigeon = await PigeonModel.findById(id);
-    console.log("show page", pigeon);
-    res.render("pigeon/show", {pigeon, user});
-  }
-  
-  async function destroy(req, res) {
+    let booking = await BookingModel.findById(id);
+    console.log(booking);
+    res.render("test");
+}
+
+async function destroy(req, res) {
     let { id } = req.params;
-    await PigeonModel.findByIdAndRemove(id);
-    res.redirect("/pigeons");
-  }
-  
-  async function update(req, res) {
-  
-  }
-  
-  async function edit(req, res) {
-  
-  }
-  
+    await BookingModel.findByIdAndRemove(id);
+    res.redirect("/booking");
+}
+
+async function update(req, res) {
+
+}
+
+async function edit(req, res) {
+
+}
+
 
 module.exports = {
     index,
