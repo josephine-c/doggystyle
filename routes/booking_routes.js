@@ -5,8 +5,8 @@ const BookingController = require("./../controllers/booking_controller");
 
 router.get("/", BookingController.index);
 router.post("/", BookingController.create);
-router.get("/:id/edit", BookingController.edit);
 router.get("/:id", BookingController.show);
+router.get("/:id/edit", BookingController.edit);
 router.put("/:id", BookingController.update);
 router.patch("/:id", BookingController.update);
 router.delete("/:id", BookingController.destroy);
