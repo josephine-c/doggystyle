@@ -5,30 +5,23 @@ const ContactSchema = new Schema({
         type: Date,
         // required: true
     },
-    firstName: {
-        type: String,
-        // required: true
-    },
-    lastName: {
-        type: String,
-        // required: true
-    },
     email: {
         type: String,
         // required: true
     },
-    details: {
+    subject: {
         type: String,
         // required: true
     },
-    status: {
+    body: {
         type: String,
-        enum: ["Pending", "Comfirmed", "Completed", "Cancelled"],
         // required: true
     },
-    paid: {
-        type: Boolean,
-        // required: true
+    answers: {
+        type: [{
+            date: Date,
+            body:String
+        }]
     }
 });
 

@@ -9,24 +9,20 @@ async function index(req, res) {
 
 async function create(req, res) {
     const { 
-        date, 
-        firstName, 
-        lastName, 
+        date,  
         email, 
-        details, 
-        status, 
-        paid 
+        subject,
+        body,
+        answers 
     } = req.body;
     
     const contact = await ContactModel.create(
         { 
-            date, 
-            firstName, 
-            lastName, 
+            date,  
             email, 
-            details, 
-            status, 
-            paid 
+            subject,
+            body,
+            answers
         }
     ).catch(err => res.status(500).send(err));
   
@@ -64,13 +60,11 @@ async function edit(req, res) {
         query,
         { $set: 
             {
-                date, 
-                firstName, 
-                lastName, 
+                date,  
                 email, 
-                details, 
-                status, 
-                paid 
+                subject,
+                body,
+                answers 
             }
         }
     );
