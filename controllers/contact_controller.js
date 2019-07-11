@@ -9,7 +9,8 @@ async function index(req, res) {
 
 async function create(req, res) {
     const { 
-        date,  
+        date,
+        name,  
         email, 
         subject,
         body,
@@ -18,7 +19,8 @@ async function create(req, res) {
     
     const contact = await ContactModel.create(
         { 
-            date,  
+            date,
+            name,  
             email, 
             subject,
             body,
@@ -60,7 +62,8 @@ async function edit(req, res) {
         query,
         { $set: 
             {
-                date,  
+                date,
+                name, 
                 email, 
                 subject,
                 body,

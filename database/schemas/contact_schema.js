@@ -5,6 +5,10 @@ const ContactSchema = new Schema({
         type: Date,
         // required: true
     },
+    name: {
+        type: String,
+        // required: true
+    },
     email: {
         type: String,
         // required: true
@@ -20,7 +24,7 @@ const ContactSchema = new Schema({
     answers: {
         type: [{
             date: Date,
-            body:String
+            body: String
         }]
     }
 });
