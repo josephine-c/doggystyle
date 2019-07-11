@@ -1,8 +1,10 @@
 const BookingModel = require("./../database/models/booking_model");
 
-
-function index(req, res) {
-    return res.render("test");
+//needs to return json to react client or a jwt, authentication can be done with cors and jwt in auth header from client end
+async function index(req, res) {
+    const bookings = await BookingModel.find();
+    return res.json(bookings);
+    // return res.render("test");
 }
 
 async function create(req, res) {
@@ -28,22 +30,18 @@ async function create(req, res) {
         }
     ).catch(err => res.status(500).send(err));
   
-    console.log(booking);
-    res.redirect("/booking");
+    console.log("post", booking);
+    // res.redirect("/booking");
+    return res.json(booking);
 
-    // res.json(booking);
-
-}
-
-async function make(req, res) {
-    res.render("test"); //should render new form
 }
 
 async function show(req, res) {
-    let { id } = req.params;
-    let booking = await BookingModel.findById(id);
+    const { id } = req.params;
+    const booking = await BookingModel.findById(id);
     console.log(booking);
-    res.render("test");
+    // res.render("test");
+    return res.json(booking);
 }
 
 async function destroy(req, res) {
@@ -53,18 +51,36 @@ async function destroy(req, res) {
 }
 
 async function update(req, res) {
-
+    const { id } = req.params;
+    const booking = await BookingModel.findById(id);
+    return res.json(booking);
 }
 
+//function may need fixing
 async function edit(req, res) {
-
+    const { id } = req.params;
+    let query = { _id: id };
+    const booking = await BookingModel.update(
+        query,
+        { $set: 
+            {
+                date, 
+                firstName, 
+                lastName, 
+                email, 
+                details, 
+                status, 
+                paid 
+            }
+        }
+    );
+    return res.json(booking);
 }
 
 
 module.exports = {
     index,
     create,
-    make,
     show,
     destroy,
     update,

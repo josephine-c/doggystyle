@@ -4,7 +4,6 @@ const router = express.Router();
 const BookingController = require("./../controllers/booking_controller");
 
 router.get("/", BookingController.index);
-router.get("/new", BookingController.make);
 router.post("/", BookingController.create);
 router.get("/:id", BookingController.show);
 router.delete("/:id", BookingController.destroy);
