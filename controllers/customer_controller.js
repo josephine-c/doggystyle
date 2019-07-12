@@ -1,66 +1,40 @@
-const BookingModel = require("./../database/models/booking_model");
 const CustomerModel = require("./../database/models/customer_model");
 
 async function index(req, res) {
-    const bookings = await BookingModel.find();
-    return res.json(bookings);
+    const customers = await CustomerModel.find();
+    return res.json(customers);
 }
 
 async function create(req, res) {
-    console.log("started creating booking", req.body);
     const { 
         date, 
         firstName, 
         lastName, 
         email, 
-        details, 
-        status, 
-        paid 
+        bookings,//need to get bookings of 
+        status
     } = req.body;
     
-    const booking = await BookingModel.create(
+    const customer = await CustomerModel.create(
         { 
             date, 
             firstName, 
             lastName, 
             email, 
-            details, 
-            status, 
-            paid 
+            bookings,
+            status
         }
     ).catch(err => res.status(500).send(err));
   
+    return res.json(customer);
 
-    // console.log("test customer model", await CustomerModel.findOne({ email: email }));
-
-    //if customer email does not already exist, create new customer with it
-    //else push booking to existing customer
-    const customer = await CustomerModel.findOne({ email: email });
-    if (!customer) { 
-        const customer = await CustomerModel.create(
-            { 
-                date, 
-                firstName, 
-                lastName, 
-                email, 
-                bookings: [booking],
-                status
-            }
-        ).catch(err => res.status(500).send(err));
-        console.log("Customer created", customer); 
-    } else {
-        customer.bookings.push(booking);
-        await customer.save();
-    }
-
-        console.log("Booking created", booking);
-        return res.json(booking);
 }
 
 async function show(req, res) {
     const { id } = req.params;
     const booking = await BookingModel.findById(id);
     console.log(booking);
+    // res.render("test");
     return res.json(booking);
 }
 
