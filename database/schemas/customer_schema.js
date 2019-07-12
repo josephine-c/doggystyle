@@ -3,6 +3,7 @@ const { Schema } = require("mongoose");
 const CustomerSchema = new Schema({
     date: {
         type: Date,
+        default: Date.now,
         // required: true
     },
     firstName: {
@@ -23,7 +24,8 @@ const CustomerSchema = new Schema({
     },
     status: {
         type: String,
-        enum: ["Active", "Inactive"]
+        enum: ["Active", "Inactive"],
+        default: "Active",
         // required: true
     }
 });
