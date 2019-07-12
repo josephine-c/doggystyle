@@ -4,7 +4,6 @@ const router = express.Router();
 const CustomerController = require("./../controllers/customer_controller");
 
 router.get("/", CustomerController.index);
-router.post("/", CustomerController.create);
 router.get("/:id", CustomerController.show);
 router.get("/:id/edit", CustomerController.edit);
 router.put("/:id", CustomerController.update);
