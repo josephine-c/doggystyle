@@ -1,15 +1,15 @@
 const BookingModel = require("./../database/models/booking_model");
+const CustomerModel = require("./../database/models/customer_model");
 
-//needs to return json to react client or a jwt, authentication can be done with cors and jwt in auth header from client end
 async function index(req, res) {
     const bookings = await BookingModel.find();
     return res.json(bookings);
-    // return res.render("test");
 }
 
 async function create(req, res) {
     const { 
-        date, 
+        date,
+        bookingDate,
         firstName, 
         lastName, 
         email, 
@@ -20,7 +20,8 @@ async function create(req, res) {
     
     const booking = await BookingModel.create(
         { 
-            date, 
+            date,
+            bookingDate,
             firstName, 
             lastName, 
             email, 
@@ -30,41 +31,70 @@ async function create(req, res) {
         }
     ).catch(err => res.status(500).send(err));
   
-    console.log("post", booking);
-    // res.redirect("/booking");
-    return res.json(booking);
+    //may move this to customer controller
+    //if customer email does not already exist, create new customer with it
+    //else push booking to existing customer
+    const customer = await CustomerModel.findOne({ email: email });
+    if (!customer) { 
+        const customer = await CustomerModel.create(
+            { 
+                date, 
+                firstName, 
+                lastName, 
+                email, 
+                bookings: [booking],
+                status
+            }
+        ).catch(err => res.status(500).send(err));
+        console.log("Customer created", customer); 
+    } else {
+        customer.bookings.push(booking);
+        await customer.save();
+    }
 
+        console.log("Booking created", booking);
+        return res.json(booking);
 }
 
 async function show(req, res) {
     const { id } = req.params;
     const booking = await BookingModel.findById(id);
-    console.log(booking);
-    // res.render("test");
     return res.json(booking);
 }
 
 async function destroy(req, res) {
     let { id } = req.params;
     await BookingModel.findByIdAndRemove(id);
-    res.redirect("/booking");
+    return res.json(await BookingModel.find());
 }
 
-async function update(req, res) {
+async function edit(req, res) {
     const { id } = req.params;
     const booking = await BookingModel.findById(id);
     return res.json(booking);
 }
 
-//function may need fixing
-async function edit(req, res) {
+async function update(req, res) {
+    console.log("params extract", req.params.id);
+    console.log("last name extract", req.body.lastName);
+
     const { id } = req.params;
-    let query = { _id: id };
-    const booking = await BookingModel.update(
+    const {
+        bookingDate,
+        firstName, 
+        lastName, 
+        email, 
+        details, 
+        status,
+        paid
+    } = req.body;
+
+    const query = { _id: id };
+    await BookingModel.update(
         query,
         { $set: 
             {
-                date, 
+                bookingDate,
                 firstName, 
                 lastName, 
                 email, 
@@ -74,7 +104,8 @@ async function edit(req, res) {
             }
         }
     );
-    return res.json(booking);
+
+    return res.json(await BookingModel.findById(id));
 }
 
 
