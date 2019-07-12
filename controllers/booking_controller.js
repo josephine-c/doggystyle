@@ -31,6 +31,7 @@ async function create(req, res) {
         }
     ).catch(err => res.status(500).send(err));
   
+    //may move this to customer controller
     //if customer email does not already exist, create new customer with it
     //else push booking to existing customer
     const customer = await CustomerModel.findOne({ email: email });

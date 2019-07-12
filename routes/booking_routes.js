@@ -11,6 +11,4 @@ router.put("/:id", BookingController.update);
 router.patch("/:id", BookingController.update);
 router.delete("/:id", BookingController.destroy);
 
-// router.post("/", BookingController.create);
-
 module.exports = router;
