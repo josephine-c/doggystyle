@@ -22,7 +22,8 @@ const ContactSchema = new Schema({
         // required: true
     },
     answers: {
-        type: [{
+        type: Array,
+        default: [{
             date: Date,
             body: String
         }]
