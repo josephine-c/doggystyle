@@ -5,76 +5,53 @@ async function index(req, res) {
     return res.json(customers);
 }
 
-async function create(req, res) {
-    const { 
-        date, 
-        firstName, 
-        lastName, 
-        email, 
-        bookings,//need to get bookings of 
-        status
-    } = req.body;
-    
-    const customer = await CustomerModel.create(
-        { 
-            date, 
-            firstName, 
-            lastName, 
-            email, 
-            bookings,
-            status
-        }
-    ).catch(err => res.status(500).send(err));
-  
-    return res.json(customer);
-
-}
-
 async function show(req, res) {
     const { id } = req.params;
-    const booking = await BookingModel.findById(id);
-    console.log(booking);
-    // res.render("test");
-    return res.json(booking);
+    const customer = await CustomerModel.findById(id);
+    return res.json(customer);
 }
 
 async function destroy(req, res) {
     let { id } = req.params;
-    await BookingModel.findByIdAndRemove(id);
-    res.redirect("/booking");
+    await CustomerModel.findByIdAndRemove(id);
+    return res.json(await CustomerModel.find());
+}
+
+async function edit(req, res) {
+    const { id } = req.params;
+    const customer = await CustomerModel.findById(id);
+    return res.json(customer);
 }
 
 async function update(req, res) {
     const { id } = req.params;
-    const booking = await BookingModel.findById(id);
-    return res.json(booking);
-}
+    const {
+        firstName, 
+        lastName, 
+        email, 
+        details, 
+        status
+    } = req.body;
 
-//function may need fixing
-async function edit(req, res) {
-    const { id } = req.params;
-    let query = { _id: id };
-    const booking = await BookingModel.update(
+    const query = { _id: id };
+    const customer = await CustomerModel.update(
         query,
         { $set: 
             {
-                date, 
                 firstName, 
                 lastName, 
                 email, 
                 details, 
-                status, 
-                paid 
+                status
             }
         }
     );
-    return res.json(booking);
+    return res.json(customer);
 }
 
 
 module.exports = {
     index,
-    create,
     show,
     destroy,
     update,

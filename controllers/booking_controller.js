@@ -7,9 +7,9 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
-    console.log("started creating booking", req.body);
     const { 
-        date, 
+        date,
+        bookingDate,
         firstName, 
         lastName, 
         email, 
@@ -20,7 +20,8 @@ async function create(req, res) {
     
     const booking = await BookingModel.create(
         { 
-            date, 
+            date,
+            bookingDate,
             firstName, 
             lastName, 
             email, 
@@ -30,9 +31,6 @@ async function create(req, res) {
         }
     ).catch(err => res.status(500).send(err));
   
-
-    // console.log("test customer model", await CustomerModel.findOne({ email: email }));
-
     //if customer email does not already exist, create new customer with it
     //else push booking to existing customer
     const customer = await CustomerModel.findOne({ email: email });
@@ -60,31 +58,42 @@ async function create(req, res) {
 async function show(req, res) {
     const { id } = req.params;
     const booking = await BookingModel.findById(id);
-    console.log(booking);
     return res.json(booking);
 }
 
 async function destroy(req, res) {
     let { id } = req.params;
     await BookingModel.findByIdAndRemove(id);
-    res.redirect("/booking");
+    return res.json(await BookingModel.find());
 }
 
-async function update(req, res) {
+async function edit(req, res) {
     const { id } = req.params;
     const booking = await BookingModel.findById(id);
     return res.json(booking);
 }
 
-//function may need fixing
-async function edit(req, res) {
+async function update(req, res) {
+    console.log("params extract", req.params.id);
+    console.log("last name extract", req.body.lastName);
+
     const { id } = req.params;
-    let query = { _id: id };
-    const booking = await BookingModel.update(
+    const {
+        bookingDate,
+        firstName, 
+        lastName, 
+        email, 
+        details, 
+        status,
+        paid
+    } = req.body;
+
+    const query = { _id: id };
+    await BookingModel.update(
         query,
         { $set: 
             {
-                date, 
+                bookingDate,
                 firstName, 
                 lastName, 
                 email, 
@@ -94,7 +103,8 @@ async function edit(req, res) {
             }
         }
     );
-    return res.json(booking);
+
+    return res.json(await BookingModel.findById(id));
 }
 
 

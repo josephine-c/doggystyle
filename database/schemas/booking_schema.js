@@ -5,6 +5,10 @@ const BookingSchema = new Schema({
         type: Date,
         // required: true
     },
+    bookingDate: {
+        type: Date,
+        // required: true
+    },
     firstName: {
         type: String,
         // required: true
