@@ -1,11 +1,19 @@
 const BookingModel = require("./../database/models/booking_model");
 const CustomerModel = require("./../database/models/customer_model");
+const nodemailer = require("nodemailer");
+const sendgridTransport = require("nodemailer-sendgrid-transport");
+const transporter = nodemailer.createTransport(sendgridTransport({
+    auth: {
+        api_key: process.env.EMAIL_KEY
+    }
+}));
 
 async function index(req, res) {
     const bookings = await BookingModel.find();
     return res.json(bookings);
 }
 
+//send email to both user and admin when booking is completed
 async function create(req, res) {
     const { 
         date,
@@ -31,6 +39,23 @@ async function create(req, res) {
         }
     ).catch(err => res.status(500).send(err));
   
+    //bookng email sent to admin
+    await transporter.sendMail({
+        to: "johnrubio93@gmail.com",
+        from: email,
+        subject: "Booking Pending",
+        html: "<h1>A booking has been made please confirm!</h1>",
+        priority: "high"
+    });
+    //bookng email sent to user
+    await transporter.sendMail({
+        to: "johnrubio93@gmail.com",
+        from: "dog@trainer.com",
+        subject: "Booking Sent",
+        html: "<h1>Your booking has been sent!</h1>",
+        priority: "high"
+    });
+
     //may move this to customer controller
     //if customer email does not already exist, create new customer with it
     //else push booking to existing customer
