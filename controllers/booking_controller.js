@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport(sendgridTransport({
 
 //retrieves all confirmed bookings and creates object holding booking count on each date
 async function getConfirmed(req, res) {
-    const bookings = await BookingModel.find({status: "confirmed"});
+    const bookings = await BookingModel.find({status: "Confirmed"});
     
     let count = bookings.reduce((acc, obj) => {
         if (!acc[obj.date]) {

@@ -7,7 +7,8 @@ const BookingSchema = new Schema({
         // required: true
     },
     bookingDate: {
-        type: Date,
+        type: String,
+        set: val => new Date(val).toDateString()
         // required: true
     },
     firstName: {
