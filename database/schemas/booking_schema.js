@@ -29,8 +29,8 @@ const BookingSchema = new Schema({
     },
     status: {
         type: String,
-        enum: ["Pending", "Comfirmed", "Completed", "Cancelled"],
-        default: "Pending",
+        enum: ["Pending", "Confirmed", "Completed", "Cancelled"],
+        default: "Confirmed",
         // required: true
     },
     paid: {

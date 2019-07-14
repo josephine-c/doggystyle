@@ -13,10 +13,10 @@ async function getConfirmed(req, res) {
     const bookings = await BookingModel.find({status: "Confirmed"});
     
     let count = bookings.reduce((acc, obj) => {
-        if (!acc[obj.date]) {
-        acc[obj.date] = 1;
+        if (!acc[obj.bookingDate]) {
+        acc[obj.bookingDate] = 1;
       } else {
-             acc[obj.date]++; 
+             acc[obj.bookingDate]++; 
       }
       return acc;
     }, {});
