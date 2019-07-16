@@ -1,10 +1,6 @@
 const { Schema } = require("mongoose");
 
 const ContactSchema = new Schema({
-    date: {
-        type: Date,
-        // required: true
-    },
     name: {
         type: String,
         // required: true
@@ -13,21 +9,29 @@ const ContactSchema = new Schema({
         type: String,
         // required: true
     },
-    subject: {
+    phone: {
+        type: Number,
+        // required: true
+    },
+    suburb: {
         type: String,
         // required: true
     },
-    body: {
+    dogDetails: {
         type: String,
         // required: true
     },
-    answers: {
-        type: Array,
-        default: [{
-            date: Date,
-            body: String
-        }]
-    }
+    details: {
+        type: String,
+        // required: true
+    },
+    // answers: {
+    //     type: Array,
+    //     default: [{
+    //         date: Date,
+    //         body: String
+    //     }]
+    // }
 });
 
 module.exports = ContactSchema;
