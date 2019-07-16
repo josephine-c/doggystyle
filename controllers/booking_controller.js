@@ -1,11 +1,50 @@
 const BookingModel = require("./../database/models/booking_model");
 const CustomerModel = require("./../database/models/customer_model");
+const nodemailer = require("nodemailer");
+const sendgridTransport = require("nodemailer-sendgrid-transport");
+const transporter = nodemailer.createTransport(sendgridTransport({
+    auth: {
+        api_key: process.env.EMAIL_KEY
+    }
+}));
+
+//retrieves all confirmed bookings and creates object holding booking count on each date
+async function getConfirmed(req, res) {
+    const bookings = await BookingModel.find({status: "Confirmed"});
+    
+    let count = bookings.reduce((acc, obj) => {
+        if (!acc[obj.bookingDate]) {
+        acc[obj.bookingDate] = 1;
+      } else {
+             acc[obj.bookingDate]++; 
+      }
+      return acc;
+    }, {});
+    
+    return res.json(count);
+}
+
+async function confirm(req, res) {
+    const { id } = req.params;
+    const query = { _id: id };
+    await BookingModel.updateOne(
+        query,
+        { $set: 
+            {
+                status: "Confirmed"
+            }
+        }
+    );
+
+    return res.json(await BookingModel.findById(id));
+}
 
 async function index(req, res) {
     const bookings = await BookingModel.find();
     return res.json(bookings);
 }
 
+//send email to both user and admin when booking is completed
 async function create(req, res) {
     const { 
         date,
@@ -31,6 +70,23 @@ async function create(req, res) {
         }
     ).catch(err => res.status(500).send(err));
   
+    //bookng email sent to admin
+    await transporter.sendMail({
+        to: "johnrubio93@gmail.com",
+        from: email,
+        subject: "Booking Pending",
+        html: "<h1>A booking has been made please confirm!</h1>",
+        priority: "high"
+    });
+    //bookng email sent to user
+    await transporter.sendMail({
+        to: "johnrubio93@gmail.com",
+        from: "dog@trainer.com",
+        subject: "Booking Sent",
+        html: "<h1>Your booking has been sent!</h1>",
+        priority: "high"
+    });
+
     //may move this to customer controller
     //if customer email does not already exist, create new customer with it
     //else push booking to existing customer
@@ -53,7 +109,8 @@ async function create(req, res) {
     }
 
         console.log("Booking created", booking);
-        return res.json(booking);
+        // return res.json(booking);
+        return res.send(200, { message: 'ok' });
 }
 
 async function show(req, res) {
@@ -90,7 +147,7 @@ async function update(req, res) {
     } = req.body;
 
     const query = { _id: id };
-    await BookingModel.update(
+    await BookingModel.updateOne(
         query,
         { $set: 
             {
@@ -115,5 +172,7 @@ module.exports = {
     show,
     destroy,
     update,
-    edit
+    edit,
+    getConfirmed,
+    confirm
 }
