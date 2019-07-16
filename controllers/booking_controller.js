@@ -24,6 +24,21 @@ async function getConfirmed(req, res) {
     return res.json(count);
 }
 
+async function confirm(req, res) {
+    const { id } = req.params;
+    const query = { _id: id };
+    await BookingModel.update(
+        query,
+        { $set: 
+            {
+                status: "Confirmed"
+            }
+        }
+    );
+
+    return res.json(await BookingModel.findById(id));
+}
+
 async function index(req, res) {
     const bookings = await BookingModel.find();
     return res.json(bookings);
@@ -94,7 +109,8 @@ async function create(req, res) {
     }
 
         console.log("Booking created", booking);
-        return res.json(booking);
+        // return res.json(booking);
+        return res.send(200, { message: 'ok' });
 }
 
 async function show(req, res) {
@@ -157,5 +173,6 @@ module.exports = {
     destroy,
     update,
     edit,
-    getConfirmed
+    getConfirmed,
+    confirm
 }
