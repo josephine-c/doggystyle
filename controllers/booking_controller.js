@@ -27,7 +27,7 @@ async function getConfirmed(req, res) {
 async function confirm(req, res) {
     const { id } = req.params;
     const query = { _id: id };
-    await BookingModel.update(
+    await BookingModel.updateOne(
         query,
         { $set: 
             {
@@ -147,7 +147,7 @@ async function update(req, res) {
     } = req.body;
 
     const query = { _id: id };
-    await BookingModel.update(
+    await BookingModel.updateOne(
         query,
         { $set: 
             {
