@@ -1,14 +1,9 @@
 const { Schema } = require("mongoose");
 
-const BookingSchema = new Schema({
+const CustomerSchema = new Schema({
     date: {
         type: Date,
         default: Date.now,
-        // required: true
-    },
-    bookingDate: {
-        type: String,
-        set: val => new Date(val).toDateString()
         // required: true
     },
     firstName: {
@@ -23,21 +18,16 @@ const BookingSchema = new Schema({
         type: String,
         // required: true
     },
-    details: {
-        type: String,
+    bookings: {
+        type: Array,
         // required: true
     },
     status: {
         type: String,
-        enum: ["Pending", "Confirmed", "Completed", "Cancelled"],
-        default: "Confirmed",
-        // required: true
-    },
-    paid: {
-        type: Boolean,
-        default: false,
+        enum: ["Active", "Inactive"],
+        default: "Active",
         // required: true
     }
 });
 
-module.exports = BookingSchema;
+module.exports = CustomerSchema;
