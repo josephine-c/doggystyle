@@ -72,7 +72,12 @@ async function create(req, res) {
   
     //bookng email sent to admin
     await transporter.sendMail({
-        to: "johnrubio93@gmail.com",
+        to: [
+            "johnrubio93@gmail.com",
+            "kensukeshibata@gmail.com",
+            "josephine.yt.chong@gmail.com",
+            "nathanielmorales01@gmail.com"
+        ],
         from: email,
         subject: "Booking Pending",
         html: "<h1>A booking has been made please confirm!</h1>",
@@ -80,7 +85,12 @@ async function create(req, res) {
     });
     //bookng email sent to user
     await transporter.sendMail({
-        to: "johnrubio93@gmail.com",
+        to: [
+            "johnrubio93@gmail.com",
+            "kensukeshibata@gmail.com",
+            "josephine.yt.chong@gmail.com",
+            "nathanielmorales01@gmail.com"
+        ],
         from: "dog@trainer.com",
         subject: "Booking Sent",
         html: "<h1>Your booking has been sent!</h1>",
