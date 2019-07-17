@@ -4,7 +4,7 @@ const BookingSchema = new Schema({
     date: {
         type: Date,
         default: Date.now,
-        get: val => val.toLocalDateString()
+        // get: val => val.toLocalDateString()
         // required: true
     },
     bookingDate: {
