@@ -23,6 +23,7 @@ async function edit(req, res) {
     return res.json(customer);
 }
 
+//Add feature if customer has not made booking in n months, change them to inactive
 async function update(req, res) {
     const { id } = req.params;
     const {

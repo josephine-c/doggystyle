@@ -3,10 +3,12 @@ const { Schema } = require("mongoose");
 const BookingSchema = new Schema({
     date: {
         type: Date,
+        default: Date.now,
         // required: true
     },
     bookingDate: {
-        type: Date,
+        type: String,
+        set: val => new Date(val).toDateString()
         // required: true
     },
     firstName: {
@@ -27,11 +29,13 @@ const BookingSchema = new Schema({
     },
     status: {
         type: String,
-        enum: ["Pending", "Comfirmed", "Completed", "Cancelled"],
+        enum: ["Pending", "Confirmed", "Completed", "Cancelled"],
+        default: "Confirmed",
         // required: true
     },
     paid: {
         type: Boolean,
+        default: false,
         // required: true
     }
 });
