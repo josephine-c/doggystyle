@@ -33,27 +33,29 @@ async function create(req, res) {
         dogDetails,
         details
         }
- ).catch(err => res.status(500).send(err));
+ ).catch(err => console.log("&&&&&&&&&&&", err));
+ //.catch(err => res.status(500).send(err));
 
 //enquires email sent to admin
- await transporter.sendMail({
-    to: "josephine.yt.chong@gmail.com",
-    from: email,
-    subject: "New Enquiry/Comment",
-    html: "<h1>An enquiry has been made please reply!</h1>",
-    priority: "high"
-});
+//  await transporter.sendMail({
+//     to: "josephine.yt.chong@gmail.com",
+//     from: email,
+//     subject: "New Enquiry/Comment",
+//     html: "<h1>An enquiry has been made please reply!</h1>",
+//     priority: "high"
+// });
 //enquires email sent to user
-await transporter.sendMail({
-    to: email,
-    from: "dog@trainer.com",
-    subject: "Enquiry/Comment has been Sent",
-    html: "<h1>Your enquiry/comment has been sent!</h1>",
-    priority: "high"
-});
+// await transporter.sendMail({
+//     to: email,
+//     from: "dog@trainer.com",
+//     subject: "Enquiry/Comment has been Sent",
+//     html: "<h1>Your enquiry/comment has been sent!</h1>",
+//     priority: "high"
+// });
 
- console.log("Message sent", contact);
+//  console.log("Message sent", contact);
  // res.redirect("/contact");
+ return res.sendStatus(404);
  return res.json(contact);
 }
 
