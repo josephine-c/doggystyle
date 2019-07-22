@@ -1,5 +1,6 @@
 require("dotenv").config();
 require("./database/connect");
+// require("./database/seeds");
 const app = require('./app');
 
 global.HTTPError = class HTTPError extends Error {

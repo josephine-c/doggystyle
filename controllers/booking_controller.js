@@ -8,7 +8,7 @@ const transporter = nodemailer.createTransport(sendgridTransport({
     }
 }));
 
-//retrieves all confirmed bookings and creates object holding booking count on each date
+//retrieves all confirmed bookings and creates object counting how many on each date
 async function getConfirmed(req, res) {
     const bookings = await BookingModel.find({status: "Confirmed"});
     
@@ -24,6 +24,7 @@ async function getConfirmed(req, res) {
     return res.json(count);
 }
 
+//confirms a booking
 async function confirm(req, res) {
     const { id } = req.params;
     const query = { _id: id };
@@ -70,6 +71,8 @@ async function create(req, res) {
         }
     ).catch(err => res.status(500).send(err));
   
+
+    //should move into services
     //bookng email sent to admin
     await transporter.sendMail({
         to: [
@@ -132,6 +135,7 @@ async function show(req, res) {
 async function destroy(req, res) {
     let { id } = req.params;
     await BookingModel.findByIdAndRemove(id);
+    console.log("deleted the booking");
     return res.json(await BookingModel.find());
 }
 
@@ -143,8 +147,6 @@ async function edit(req, res) {
 
 async function update(req, res) {
     console.log("params extract", req.params.id);
-    console.log("last name extract", req.body.lastName);
-
     const { id } = req.params;
     const {
         bookingDate,
