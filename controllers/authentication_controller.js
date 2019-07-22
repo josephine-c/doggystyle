@@ -25,7 +25,7 @@ async function loginCreate(req, res) {
     const token = jwt.sign(
         { user }, 
         process.env.JWT_SECRET, 
-        { expiresIn: "10m" },
+        { expiresIn: "24hr" },
         (err, token) => {
             if (err) throw err;
             res.json({token});
