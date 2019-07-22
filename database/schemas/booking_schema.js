@@ -37,6 +37,7 @@ const BookingSchema = new Schema({
     paid: {
         type: Boolean,
         default: false,
+        set: val => val === "true"
         // required: true
     }
 });
