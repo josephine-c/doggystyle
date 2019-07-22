@@ -5,6 +5,7 @@ const ContactController = require("./../controllers/contact_controller");
 const BookingRoutes = require("./booking_routes");
 const CustomerRoutes = require("./customer_routes");
 const ContactRoutes = require("./contact_routes");
+const AuthRoutes = require("./auth_routes");
 
 router.get("/", (req, res) => res.send("Welcome"));
 router.use("/bookings", BookingRoutes);
@@ -28,5 +29,6 @@ router.post(
 );
 
 router.use("/contactus", ContactRoutes);
+router.use("/admin", AuthRoutes);
 
 module.exports = router;

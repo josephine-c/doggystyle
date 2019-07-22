@@ -67,6 +67,7 @@ async function create(req, res) {
     paid
   }).catch(err => res.status(500).send(err));
 
+  //should move into services
   //bookng email sent to admin
   await transporter.sendMail({
     to: [
@@ -127,6 +128,7 @@ async function show(req, res) {
 async function destroy(req, res) {
   let { id } = req.params;
   await BookingModel.findByIdAndRemove(id);
+  console.log("deleted the booking");
   return res.json(await BookingModel.find());
 }
 

@@ -10,7 +10,11 @@ const ContactSchema = new Schema({
     // required: true
   },
   phone: {
+<<<<<<< HEAD
     type: String
+=======
+    type: Number
+>>>>>>> nathaniel
     // required: true
   },
   suburb: {

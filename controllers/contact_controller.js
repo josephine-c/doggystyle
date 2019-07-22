@@ -30,9 +30,10 @@ async function create(req, res) {
       return res.sendStatus(200);
     })
     // .catch(err => console.log("&&&&&&&&&&&", err));
+
     .catch(err => res.status(500).send(err));
 
-  // enquires email sent to admin
+  //enquires email sent to admin
   await transporter.sendMail({
     to: "josephine.yt.chong@gmail.com",
     from: email,
@@ -40,7 +41,7 @@ async function create(req, res) {
     html: "<h1>An enquiry has been made please reply!</h1>",
     priority: "high"
   });
-  // enquires email sent to user
+  //enquires email sent to user
   await transporter.sendMail({
     to: email,
     from: "dog@trainer.com",
@@ -50,9 +51,8 @@ async function create(req, res) {
   });
 
   console.log("Message sent", contact);
-  res.redirect("/contact");
+  // res.redirect("/contact");
   return res.sendStatus(404);
-
   return res.json(contact);
 }
 
