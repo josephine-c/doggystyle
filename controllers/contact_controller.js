@@ -50,7 +50,7 @@ async function create(req, res) {
   });
 
   console.log("Message sent", contact);
-  res.redirect("/contacts");
+  res.redirect("/contact");
   return res.sendStatus(404);
 
   return res.json(contact);

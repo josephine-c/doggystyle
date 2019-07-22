@@ -8,7 +8,7 @@ const ContactRoutes = require("./contact_routes");
 
 router.get("/", (req, res) => res.send("Welcome"));
 router.use("/bookings", BookingRoutes);
-router.use("/customers", CustomerRoutes);
+// router.use("/customers", CustomerRoutes);
 
 router.post(
   "/contactus",
