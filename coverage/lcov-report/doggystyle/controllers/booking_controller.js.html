@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.24% </span>
+        <span class="strong">11.76% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>6/49</span>
+        <span class='fraction'>6/51</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.24% </span>
+        <span class="strong">11.76% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>6/49</span>
+        <span class='fraction'>6/51</span>
       </div>
     </div>
   </div>
@@ -222,7 +222,10 @@
 177
 178
 179
-180</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+180
+181
+182
+183</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -269,6 +272,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -292,18 +296,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -318,6 +310,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -349,6 +354,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -448,6 +454,7 @@ async function <span class="fstat-no" title="function not covered" >index(</span
 &nbsp;
 //send email to both user and admin when booking is completed
 async function <span class="fstat-no" title="function not covered" >create(</span>req, res) {
+<span class="cstat-no" title="statement not covered" >  console.log(req.body);</span>
   const {
     date,
     bookingDate,
@@ -470,6 +477,7 @@ async function <span class="fstat-no" title="function not covered" >create(</spa
     paid
   }).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(500).send(err))</span>;
 &nbsp;
+  //should move into services
   //bookng email sent to admin
 <span class="cstat-no" title="statement not covered" >  await transporter.sendMail({</span>
     to: [
@@ -530,6 +538,7 @@ async function <span class="fstat-no" title="function not covered" >show(</span>
 async function <span class="fstat-no" title="function not covered" >destroy(</span>req, res) {
   let { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
 <span class="cstat-no" title="statement not covered" >  await BookingModel.findByIdAndRemove(id);</span>
+<span class="cstat-no" title="statement not covered" >  console.log("deleted the booking");</span>
 <span class="cstat-no" title="statement not covered" >  return res.json(await BookingModel.find());</span>
 }
 &nbsp;
@@ -586,7 +595,7 @@ module.exports = {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jul 22 2019 13:25:16 GMT+1000 (Australian Eastern Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Jul 22 2019 16:57:30 GMT+1000 (Australian Eastern Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

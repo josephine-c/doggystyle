@@ -16,9 +16,9 @@ afterAll(() => {
   mongoose.connection.close();
 });
 
-describe("The user creates a new contact", () => {
+describe("The user creates a new enquiry", () => {
   it("POST /contactus with valid req body", async () => {
-    const response = await supertest(app)
+    const resContact1 = await supertest(app)
       .post("/contactus")
       .send({
         name: "Nathaniel",
@@ -29,13 +29,13 @@ describe("The user creates a new contact", () => {
         details: "bacon detailss"
       })
       .expect(200);
-    expect(response.body).toEqual({});
+    expect(resContact1.body).toEqual({});
   });
 });
 
-describe("The user creates a new contact", () => {
+describe("The user creates a new enquiry", () => {
   it("POST /contactus with valid req body", async () => {
-    const response2 = await supertest(app)
+    const resContact2 = await supertest(app)
       .post("/contactus")
       .send({
         name: "Test2NoEmail",
@@ -46,13 +46,13 @@ describe("The user creates a new contact", () => {
         details: "bacon detailss"
       })
       .expect(500);
-    expect(response2.body).toEqual({});
+    expect(resContact2.body).toEqual({});
   });
 });
 
-describe("The user creates a new contact", () => {
+describe("The user creates a new enquiry", () => {
   it("POST /contactus with valid req body", async () => {
-    const response3 = await supertest(app)
+    const resContact3 = await supertest(app)
       .post("/contactus")
       .send({
         name: "Test3NoPhoneLessThan8",
@@ -63,13 +63,13 @@ describe("The user creates a new contact", () => {
         details: "bacon detailss"
       })
       .expect(500);
-    expect(response3.body).toEqual({});
+    expect(resContact3.body).toEqual({});
   });
 });
 
-describe("The user creates a new contact", () => {
+describe("The user creates a new enquiry", () => {
   it("POST /contactus with valid req body", async () => {
-    const response4 = await supertest(app)
+    const resContact4 = await supertest(app)
       .post("/contactus")
       .send({
         name: "Test4NoPhoneBlank",
@@ -80,13 +80,13 @@ describe("The user creates a new contact", () => {
         details: "bacon detailss"
       })
       .expect(500);
-    expect(response4.body).toEqual({});
+    expect(resContact4.body).toEqual({});
   });
 });
 
-describe("The user creates a new contact", () => {
+describe("The user creates a new enquiry", () => {
   it("POST /contactus with valid req body", async () => {
-    const response5 = await supertest(app)
+    const resContact5 = await supertest(app)
       .post("/contactus")
       .send({
         name: "Test5NaN",
@@ -97,13 +97,13 @@ describe("The user creates a new contact", () => {
         details: "bacon detailss"
       })
       .expect(500);
-    expect(response5.body).toEqual({});
+    expect(resContact5.body).toEqual({});
   });
 });
 
-describe("The user creates a new contact", () => {
+describe("The user creates a new enquiry", () => {
   it("POST /contactus with valid req body", async () => {
-    const response6 = await supertest(app)
+    const resContact6 = await supertest(app)
       .post("/contactus")
       .send({
         name: "Test6 No Suburb",
@@ -114,13 +114,13 @@ describe("The user creates a new contact", () => {
         details: "bacon detailss"
       })
       .expect(500);
-    expect(response6.body).toEqual({});
+    expect(resContact6.body).toEqual({});
   });
 });
 
-describe("The user creates a new contact", () => {
+describe("The user creates a new enquiry", () => {
   it("POST /contactus with valid req body", async () => {
-    const response7 = await supertest(app)
+    const resContact7 = await supertest(app)
       .post("/contactus")
       .send({
         name: "Test 7 No dogDetails",
@@ -131,13 +131,13 @@ describe("The user creates a new contact", () => {
         details: "bacon detailss"
       })
       .expect(500);
-    expect(response7.body).toEqual({});
+    expect(resContact7.body).toEqual({});
   });
 });
 
-describe("The user creates a new contact", () => {
+describe("The user creates a new enquiry", () => {
   it("POST /contactus with valid req body", async () => {
-    const response8 = await supertest(app)
+    const resContact8 = await supertest(app)
       .post("/contactus")
       .send({
         name: "Test8 No Details",
@@ -148,6 +148,183 @@ describe("The user creates a new contact", () => {
         details: ""
       })
       .expect(500);
-    expect(response8.body).toEqual({});
+    expect(resContact8.body).toEqual({});
+  });
+});
+
+describe("The user creates a new booking", () => {
+  it("POST /bookings with valid req body", async () => {
+    const resBook1 = await supertest(app)
+      .post("/bookings")
+      .send({
+        date: "",
+        firstName: "a",
+        lastName: "a",
+        email: "a",
+        details: "a"
+      })
+      .expect(500);
+    expect(resBook1.body).toEqual({});
+  });
+});
+
+describe("The user creates a new booking", () => {
+  it("POST /bookings with valid req body", async () => {
+    const resBook2 = await supertest(app)
+      .post("/bookings")
+      .send({
+        date: 7 / 22 / 2019,
+        firstName: "",
+        lastName: "a",
+        email: "a",
+        details: "a"
+      })
+      .expect(500);
+    expect(resBook2.body).toEqual({});
+  });
+});
+
+describe("The user creates a new booking", () => {
+  it("POST /bookings with valid req body", async () => {
+    const resBook3 = await supertest(app)
+      .post("/bookings")
+      .send({
+        date: 7 / 22 / 2019,
+        firstName: "a",
+        lastName: "",
+        email: "a",
+        details: "a"
+      })
+      .expect(500);
+    expect(resBook3.body).toEqual({});
+  });
+});
+
+describe("The user creates a new booking", () => {
+  it("POST /bookings with valid req body", async () => {
+    const resBook4 = await supertest(app)
+      .post("/bookings")
+      .send({
+        date: 7 / 22 / 2019,
+        firstName: "a",
+        lastName: "a",
+        email: "",
+        details: "a"
+      })
+      .expect(500);
+    expect(resBook4.body).toEqual({});
+  });
+});
+
+describe("The user creates a new booking", () => {
+  it("POST /bookings with valid req body", async () => {
+    const resBook5 = await supertest(app)
+      .post("/bookings")
+      .send({
+        date: 7 / 22 / 2019,
+        firstName: "a",
+        lastName: "a",
+        email: "a",
+        details: ""
+      })
+      .expect(500);
+    expect(resBook5.body).toEqual({});
+  });
+});
+
+describe("The user creates a new booking", () => {
+  it("POST /bookings with valid req body", async () => {
+    const resBook6 = await supertest(app)
+      .post("/bookings")
+      .send({
+        date: "a",
+        firstName: "a",
+        lastName: "a",
+        email: "a",
+        details: "a"
+      })
+      .expect(500);
+    expect(resBook6.body).toEqual({});
+  });
+});
+
+describe("The user creates a new booking", () => {
+  it("POST /bookings with valid req body", async () => {
+    const resBook7 = await supertest(app)
+      .post("/bookings")
+      .send({
+        date: 7 / 22 / 2019,
+        firstName: 1,
+        lastName: "a",
+        email: "a",
+        details: "a"
+      })
+      .expect(500);
+    expect(resBook7.body).toEqual({});
+  });
+});
+
+describe("The user creates a new booking", () => {
+  it("POST /bookings with valid req body", async () => {
+    const resBook8 = await supertest(app)
+      .post("/bookings")
+      .send({
+        date: 7 / 22 / 2019,
+        firstName: "a",
+        lastName: 1,
+        email: "a",
+        details: "a"
+      })
+      .expect(500);
+    expect(resBook8.body).toEqual({});
+  });
+});
+
+describe("The user creates a new booking", () => {
+  it("POST /bookings with valid req body", async () => {
+    const resBook9 = await supertest(app)
+      .post("/bookings")
+      .send({
+        date: 7 / 22 / 2019,
+        firstName: "a",
+        lastName: "a",
+        email: 1,
+        details: "a"
+      })
+      .expect(500);
+    expect(resBook9.body).toEqual({});
+  });
+});
+
+describe("The user creates a new booking", () => {
+  it("POST /bookings with valid req body", async () => {
+    const resBook10 = await supertest(app)
+      .post("/bookings")
+      .send({
+        date: 7 / 22 / 2019,
+        firstName: "a",
+        lastName: "a",
+        email: "a",
+        details: 1
+      })
+      .expect(500);
+    expect(resBook10.body).toEqual({});
+  });
+});
+
+describe("The user creates a new booking", () => {
+  it("POST /bookings with valid req body", async () => {
+    const resBook11 = await supertest(app)
+      .post("/bookings")
+      .send({
+        date: "Mon Jul 22 2019",
+        firstName: "a",
+        lastName: "a",
+        email: "test@test.com",
+        details: "a",
+        bookingDate: "Mon Jul 22 2019"
+      })
+      .expect(200);
+    expect(resBook11.body).toEqual({});
   });
 });

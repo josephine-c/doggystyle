@@ -45,8 +45,8 @@ async function index(req, res) {
 
 //send email to both user and admin when booking is completed
 async function create(req, res) {
+  console.log(req.body);
   const {
-    date,
     bookingDate,
     firstName,
     lastName,
@@ -57,7 +57,6 @@ async function create(req, res) {
   } = req.body;
 
   const booking = await BookingModel.create({
-    date,
     bookingDate,
     firstName,
     lastName,
