@@ -1,3 +1,4 @@
+require("dotenv").config();
 require("./connect");
 const UserModel = require("./models/user_model");
 

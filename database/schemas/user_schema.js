@@ -7,12 +7,16 @@ const UserSchema = new Schema({
     },
     password: {
         type: String,
-        // required: true
+        // required: true,
+        trim: true,
+        bcrypt: true
     },
     role: {
         type: String,
         // required: true
     }
 });
+
+UserSchema.plugin(require('mongoose-bcrypt'));
 
 module.exports = UserSchema;

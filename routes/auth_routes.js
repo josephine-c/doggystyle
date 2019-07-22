@@ -11,7 +11,6 @@ router.post("/login",
 //         password: Joi.string().required()
 //     }
 // }), 
-AuthenticationController.loginCreate);
+AuthenticationController.login);
 
-// router.get("/login", AuthenticationController.login);
 module.exports = router;
