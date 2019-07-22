@@ -173,7 +173,6 @@ describe("The user creates a new booking", () => {
     const resBook2 = await supertest(app)
       .post("/bookings")
       .send({
-        date: 7 / 22 / 2019,
         firstName: "",
         lastName: "a",
         email: "a",
@@ -189,7 +188,6 @@ describe("The user creates a new booking", () => {
     const resBook3 = await supertest(app)
       .post("/bookings")
       .send({
-        date: 7 / 22 / 2019,
         firstName: "a",
         lastName: "",
         email: "a",
@@ -205,7 +203,6 @@ describe("The user creates a new booking", () => {
     const resBook4 = await supertest(app)
       .post("/bookings")
       .send({
-        date: 7 / 22 / 2019,
         firstName: "a",
         lastName: "a",
         email: "",
@@ -221,7 +218,6 @@ describe("The user creates a new booking", () => {
     const resBook5 = await supertest(app)
       .post("/bookings")
       .send({
-        date: 7 / 22 / 2019,
         firstName: "a",
         lastName: "a",
         email: "a",
@@ -253,7 +249,6 @@ describe("The user creates a new booking", () => {
     const resBook7 = await supertest(app)
       .post("/bookings")
       .send({
-        date: 7 / 22 / 2019,
         firstName: 1,
         lastName: "a",
         email: "a",
@@ -269,7 +264,6 @@ describe("The user creates a new booking", () => {
     const resBook8 = await supertest(app)
       .post("/bookings")
       .send({
-        date: 7 / 22 / 2019,
         firstName: "a",
         lastName: 1,
         email: "a",
@@ -285,7 +279,6 @@ describe("The user creates a new booking", () => {
     const resBook9 = await supertest(app)
       .post("/bookings")
       .send({
-        date: 7 / 22 / 2019,
         firstName: "a",
         lastName: "a",
         email: 1,
@@ -301,7 +294,6 @@ describe("The user creates a new booking", () => {
     const resBook10 = await supertest(app)
       .post("/bookings")
       .send({
-        date: 7 / 22 / 2019,
         firstName: "a",
         lastName: "a",
         email: "a",
@@ -317,7 +309,6 @@ describe("The user creates a new booking", () => {
     const resBook11 = await supertest(app)
       .post("/bookings")
       .send({
-        date: "Mon Jul 22 2019",
         firstName: "a",
         lastName: "a",
         email: "test@test.com",
