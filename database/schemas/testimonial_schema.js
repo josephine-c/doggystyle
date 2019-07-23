@@ -1,13 +1,13 @@
 const { Schema } = require("mongoose");
 
-const BlogSchema = new Schema({
+const TestimonialSchema = new Schema({
     date: {
         type: Date,
         default: Date.now,
         // get: val => val.toLocaleDateString()
         // required: true
     },
-    title: {
+    author: {
         type: String,
         // required: true
     },
@@ -15,11 +15,10 @@ const BlogSchema = new Schema({
         type: String,
         // required: true
     },
-    tags : {
-        type: Array,
-        set: val => val.split(", "),
+    dog: {
+        type: String,
         // required: true
     }
 });
 
-module.exports = BlogSchema;
+module.exports = TestimonialSchema;
