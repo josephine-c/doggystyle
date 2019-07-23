@@ -32,7 +32,7 @@ async function create(req, res) {
     to: "josephine.yt.chong@gmail.com",
     from: email,
     subject: "New Enquiry/Comment",
-    html: "<h1>An enquiry has been made please reply!</h1>",
+    html: `${name} (email: ${email}, phone: ${phone}) living in ${suburb} is enquiring about ${dogDetails} and has the enquiry/comment: ${details}`,
     priority: "high"
   });
   //enquires email sent to user
