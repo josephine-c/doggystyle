@@ -4,7 +4,7 @@ const BookingSchema = new Schema({
     date: {
         type: Date,
         default: Date.now,
-        // get: val => val.toLocalDateString()
+        // get: val => val.toLocaleDateString()
         // required: true
     },
     bookingDate: {
@@ -31,7 +31,7 @@ const BookingSchema = new Schema({
     status: {
         type: String,
         enum: ["Pending", "Confirmed", "Completed", "Cancelled"],
-        default: "Confirmed",
+        default: "Pending",
         // required: true
     },
     paid: {
