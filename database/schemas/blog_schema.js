@@ -17,6 +17,7 @@ const BlogSchema = new Schema({
     },
     tags : {
         type: Array,
+        set: val => val.split(", "),
         // required: true
     }
 });
