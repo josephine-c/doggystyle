@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 async function login(req, res) {
     const { username, password } = req.body;
     const user = await UserModel.findOne({ username });
-    console.log("login attempt", req.body);
 
     if (!user) {
         return res.status(400).json({ error: "Invalid username or password" });
