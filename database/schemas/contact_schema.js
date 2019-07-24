@@ -1,6 +1,11 @@
 const { Schema } = require("mongoose");
 
 const ContactSchema = new Schema({
+    date: {
+        type: Date,
+        default: Date.now,
+        // get: val => val.toLocaleDateString()
+    },
     name: {
         type: String,
         // required: true
@@ -10,7 +15,7 @@ const ContactSchema = new Schema({
         // required: true
     },
     phone: {
-        type: Number,
+        type: String,
         // required: true
     },
     suburb: {

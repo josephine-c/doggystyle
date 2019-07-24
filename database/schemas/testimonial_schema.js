@@ -1,33 +1,30 @@
 const { Schema } = require("mongoose");
 
-const CustomerSchema = new Schema({
+const TestimonialSchema = new Schema({
     date: {
         type: Date,
         default: Date.now,
+        // get: val => val.toLocaleDateString()
         // required: true
     },
-    firstName: {
+    author: {
         type: String,
         // required: true
     },
-    lastName: {
+    body: {
         type: String,
         // required: true
     },
-    email: {
+    dog: {
         type: String,
         // required: true
     },
-    bookings: {
-        type: Array,
-        // required: true
-    },
-    status: {
-        type: String,
-        enum: ["Active", "Inactive"],
-        default: "Active",
+    approved: {
+        type: Boolean,
+        // default: false,
+        // set: val => val === "true"
         // required: true
     }
 });
 
-module.exports = CustomerSchema;
+module.exports = TestimonialSchema;

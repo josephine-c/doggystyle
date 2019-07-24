@@ -1,5 +1,4 @@
 const BookingModel = require("./../database/models/booking_model");
-const CustomerModel = require("./../database/models/customer_model");
 const nodemailer = require("nodemailer");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
 const transporter = nodemailer.createTransport(sendgridTransport({
@@ -8,44 +7,12 @@ const transporter = nodemailer.createTransport(sendgridTransport({
     }
 }));
 
-//retrieves all confirmed bookings and creates object counting how many on each date
-async function getConfirmed(req, res) {
-    const bookings = await BookingModel.find({status: "Confirmed"});
-    
-    let count = bookings.reduce((acc, obj) => {
-        if (!acc[obj.bookingDate]) {
-        acc[obj.bookingDate] = 1;
-      } else {
-             acc[obj.bookingDate]++; 
-      }
-      return acc;
-    }, {});
-    
-    return res.json(count);
-}
-
-//confirms a booking
-async function confirm(req, res) {
-    const { id } = req.params;
-    const query = { _id: id };
-    await BookingModel.updateOne(
-        query,
-        { $set: 
-            {
-                status: "Confirmed"
-            }
-        }
-    );
-
-    return res.json(await BookingModel.findById(id));
-}
-
 async function index(req, res) {
-    const bookings = await BookingModel.find();
+    const bookings = await BookingModel.find()
+    .catch(err => res.status(500).send(err));
     return res.json(bookings);
 }
 
-//send email to both user and admin when booking is completed
 async function create(req, res) {
     const { 
         date,
@@ -71,8 +38,6 @@ async function create(req, res) {
         }
     ).catch(err => res.status(500).send(err));
   
-
-    //should move into services
     //bookng email sent to admin
     await transporter.sendMail({
         to: [
@@ -100,53 +65,36 @@ async function create(req, res) {
         priority: "high"
     });
 
-    //may move this to customer controller
-    //if customer email does not already exist, create new customer with it
-    //else push booking to existing customer
-    const customer = await CustomerModel.findOne({ email: email });
-    if (!customer) { 
-        const customer = await CustomerModel.create(
-            { 
-                date, 
-                firstName, 
-                lastName, 
-                email, 
-                bookings: [booking],
-                status
-            }
-        ).catch(err => res.status(500).send(err));
-        console.log("Customer created", customer); 
-    } else {
-        customer.bookings.push(booking);
-        await customer.save();
-    }
-
         console.log("Booking created", booking);
         // return res.json(booking);
-        return res.send(200, { message: 'ok' });
+        res.send(200, { message: "ok" });
 }
 
 async function show(req, res) {
     const { id } = req.params;
-    const booking = await BookingModel.findById(id);
+
+    const booking = await BookingModel.findById(id)
+    .catch(err => res.status(500).send(err));
     return res.json(booking);
 }
 
 async function destroy(req, res) {
     let { id } = req.params;
-    await BookingModel.findByIdAndRemove(id);
-    console.log("deleted the booking");
-    return res.json(await BookingModel.find());
+
+    await BookingModel.findByIdAndRemove(id)
+    .catch(err => res.status(500).send(err));
+    res.json(await BookingModel.find());
 }
 
 async function edit(req, res) {
     const { id } = req.params;
-    const booking = await BookingModel.findById(id);
+
+    const booking = await BookingModel.findById(id)
+    .catch(err => res.status(500).send(err));
     return res.json(booking);
 }
 
 async function update(req, res) {
-    console.log("params extract", req.params.id);
     const { id } = req.params;
     const {
         bookingDate,
@@ -157,8 +105,8 @@ async function update(req, res) {
         status,
         paid
     } = req.body;
-
     const query = { _id: id };
+
     await BookingModel.updateOne(
         query,
         { $set: 
@@ -172,11 +120,37 @@ async function update(req, res) {
                 paid 
             }
         }
-    );
-
+    ).catch(err => res.status(500).send(err));
     return res.json(await BookingModel.findById(id));
 }
 
+//retrieves all confirmed bookings and creates object counting how many on each date
+async function getConfirmed(req, res) {
+    const bookings = await BookingModel.find({status: "Confirmed"})
+    .catch(err => res.status(500).send(err));
+    
+    let count = bookings.reduce((acc, obj) => {
+        if (!acc[obj.bookingDate]) {
+            acc[obj.bookingDate] = 1;
+        } else {
+            acc[obj.bookingDate]++; 
+        }
+        return acc;
+    }, {});
+    return res.json(count);
+}
+
+//confirms a booking
+async function confirm(req, res) {
+    const { id } = req.params;
+    const query = { _id: id };
+
+    await BookingModel.updateOne(
+        query,
+        { $set: { status: "Confirmed" } }
+    ).catch(err => res.status(500).send(err));
+    return res.json(await BookingModel.findById(id));
+}
 
 module.exports = {
     index,
