@@ -7,6 +7,12 @@ const transporter = nodemailer.createTransport(sendgridTransport({
     }
 }));
 
+async function index(req, res) {
+    const bookings = await BookingModel.find()
+    .catch(err => res.status(500).send(err));
+    return res.json(bookings);
+}
+
 async function create(req, res) {
     const { 
         date,
@@ -144,12 +150,6 @@ async function confirm(req, res) {
         { $set: { status: "Confirmed" } }
     ).catch(err => res.status(500).send(err));
     return res.json(await BookingModel.findById(id));
-}
-
-async function index(req, res) {
-    const bookings = await BookingModel.find()
-    .catch(err => res.status(500).send(err));
-    return res.json(bookings);
 }
 
 module.exports = {

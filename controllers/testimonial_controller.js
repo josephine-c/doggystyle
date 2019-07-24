@@ -1,7 +1,7 @@
 const TestimonialModel = require("./../database/models/testimonial_model");
 
 async function create(req, res) {
-    const { author, body, dog} = req.body;
+    const { author, body, dog } = req.body;
 
     const testimonial = await TestimonialModel.create({ author, body, dog })
     .catch(err => res.status(500).send(err));
@@ -49,11 +49,30 @@ async function update(req, res) {
     res.json(await TestimonialModel.findById(id));
 }
 
+async function approveToggle(req, res) {
+    const { id } = req.params;
+    // const query = { _id: id };
+
+    const testimonial = await TestimonialModel.findById(id)
+    .catch(err => res.status(500).send(err));
+
+    console.log("tese", testimonial.approved);
+    await testimonial.updateOne(
+        id,
+        { $set: { approved: !testimonial.approved } }
+    ).catch(err => res.status(500).send(err));
+
+    testimonial.save();
+
+    res.json(await TestimonialModel.findById(id));
+}
+
 module.exports = {
     create,
     index,
     show,
     destroy,
     update,
-    edit
+    edit,
+    approveToggle
 }

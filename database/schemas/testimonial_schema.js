@@ -18,6 +18,12 @@ const TestimonialSchema = new Schema({
     dog: {
         type: String,
         // required: true
+    },
+    approved: {
+        type: Boolean,
+        default: false,
+        set: val => val === "true"
+        // required: true
     }
 });
 
