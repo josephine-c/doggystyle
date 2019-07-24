@@ -15,31 +15,34 @@ async function create(req, res) {
            }
     ).catch(err => res.status(500).send(err));
    
-    console.log("Blog post created", blogPost);
-    return res.json(blogPost);
+    res.json(blogPost);
 }
 
 async function index(req, res) {
-    const blog = await BlogModel.find();
-    return res.json(blog);
+    const blog = await BlogModel.find()
+    .catch(err => res.status(500).send(err));
+    res.json(blog);
 }
 
 async function show(req, res) {
     const { id } = req.params;
-    const blogPost = await BlogModel.findById(id);
-    return res.json(blogPost);
+    const blogPost = await BlogModel.findById(id)
+    .catch(err => res.status(500).send(err));
+    res.json(blogPost);
 }
 
 async function destroy(req, res) {
     let { id } = req.params;
-    await BlogModel.findByIdAndRemove(id);
-    return res.json(await BlogModel.find());
+    await BlogModel.findByIdAndRemove(id)
+    .catch(err => res.status(500).send(err));
+    res.json(await BlogModel.find());
 }
 
 async function edit(req, res) {
     const { id } = req.params;
-    const blogPost = await BlogModel.findById(id);
-    return res.json(blogPost);
+    const blogPost = await BlogModel.findById(id)
+    .catch(err => res.status(500).send(err));
+    res.json(blogPost);
 }
 
 async function update(req, res) {
@@ -60,7 +63,7 @@ async function update(req, res) {
                 tags
             }
         }
-    );
+    ).catch(err => res.status(500).send(err));
     return res.json(await BlogModel.findById(id));
 }
 

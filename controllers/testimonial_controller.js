@@ -51,20 +51,13 @@ async function update(req, res) {
 
 async function approveToggle(req, res) {
     const { id } = req.params;
-    // const query = { _id: id };
 
-    const testimonial = await TestimonialModel.findById(id)
-    .catch(err => res.status(500).send(err));
-
-    console.log("tese", testimonial.approved);
-    await testimonial.updateOne(
-        id,
-        { $set: { approved: !testimonial.approved } }
-    ).catch(err => res.status(500).send(err));
-
-    testimonial.save();
-
-    res.json(await TestimonialModel.findById(id));
+    await TestimonialModel.findById(id, (err, testimonial) => {
+        testimonial.approved = !testimonial.approved;
+        testimonial.save((err, updatedBook) => {
+            res.json(updatedBook)
+        });
+    }).catch(err => res.status(500).send(err));
 }
 
 module.exports = {

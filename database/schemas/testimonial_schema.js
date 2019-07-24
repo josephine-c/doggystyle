@@ -21,8 +21,8 @@ const TestimonialSchema = new Schema({
     },
     approved: {
         type: Boolean,
-        default: false,
-        set: val => val === "true"
+        // default: false,
+        // set: val => val === "true"
         // required: true
     }
 });

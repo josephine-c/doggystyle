@@ -9,7 +9,8 @@ const transporter = nodemailer.createTransport(sendgridTransport({
 
 //needs to return json to react client or a jwt, authentication can be done with cors and jwt in auth header from client end
 async function index(req, res) {
- const contacts = await ContactModel.find();
+ const contacts = await ContactModel.find()
+ .catch(err => res.status(500).send(err));
  return res.json(contacts);
 
 }
@@ -59,20 +60,23 @@ await transporter.sendMail({
 
 async function show(req, res) {
  const { id } = req.params;
- const contact = await ContactModel.findById(id);
+ const contact = await ContactModel.findById(id)
+ .catch(err => res.status(500).send(err));
  console.log(contact);
  return res.json(contact);
 }
 
 async function destroy(req, res) {
  let { id } = req.params;
- await ContactModel.findByIdAndRemove(id);
+ await ContactModel.findByIdAndRemove(id)
+ .catch(err => res.status(500).send(err));
  res.redirect("/contact");
 }
 
 async function update(req, res) {
  const { id } = req.params;
- const contact = await ContactModel.findById(id);
+ const contact = await ContactModel.findById(id)
+ .catch(err => res.status(500).send(err));
  return res.json(contact);
 }
 
@@ -88,7 +92,7 @@ async function edit(req, res) {
      dogDetails,
      details
    }
- });
+ }).catch(err => res.status(500).send(err));
 
  return res.json(contact);
 }
