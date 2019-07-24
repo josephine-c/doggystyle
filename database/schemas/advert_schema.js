@@ -10,13 +10,11 @@ const AdvertSchema = new Schema({
         // required: true
     },
     image : {
-        type: Array,
-        set: val => val.split(", "),
+        type: String,
         // required: true
     },
     link : {
-        type: Array,
-        set: val => val.split(", "),
+        type: String,
         // required: true
     },
 });
