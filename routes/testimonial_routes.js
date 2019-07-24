@@ -16,9 +16,9 @@ router.post("/",
     // }), 
     TestimonialController.create);
 
-router.get("/:id/approve", TestimonialController.approveToggle);
+// router.get("/:id/approve", TestimonialController.approveToggle);
 
-router.get("/:id/approve", TestimonialController.approveToggle);
+// router.get("/:id/approve", TestimonialController.approveToggle);
 
 router.get("/:id", TestimonialController.show);
 
