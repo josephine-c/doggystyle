@@ -48,7 +48,7 @@ async function create(req, res) {
         ],
         from: email,
         subject: "Booking Pending",
-        html: "<h1>A booking has been made please confirm!</h1>",
+        html: `On ${date} ${firstName} ${lastName} (email: ${email}) would like to make a booking for ${bookingDate}. Status:${status} Paid: ${paid} Details: ${details} is enquiring about ${dogDetails} and has the enquiry/comment: ${details}`,
         priority: "high"
     });
     //bookng email sent to user
@@ -61,7 +61,7 @@ async function create(req, res) {
         ],
         from: "dog@trainer.com",
         subject: "Booking Sent",
-        html: "<h1>Your booking has been sent!</h1>",
+        html: `Message sent to trainer on ${date}: ${firstName} ${lastName} (email: ${email}) would like to make a booking for ${bookingDate}. Status:${status} Paid: ${paid} Details: ${details} is enquiring about ${dogDetails} and has the enquiry/comment: ${details}`,
         priority: "high"
     });
 
