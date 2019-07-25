@@ -1,3 +1,4 @@
+const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const BookingSchema = require("./../schemas/booking_schema");
 

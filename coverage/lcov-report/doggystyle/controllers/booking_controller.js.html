@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for doggystyle/controllers/booking_controller.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">doggystyle/controllers</a> booking_controller.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">23.91% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>11/46</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.88% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/17</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">23.91% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>11/46</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const BookingModel = require("./../database/models/booking_model");
+const nodemailer = require("nodemailer");
+const sendgridTransport = require("nodemailer-sendgrid-transport");
+const transporter = nodemailer.createTransport(
+  sendgridTransport({
+    auth: {
+      api_key: process.env.EMAIL_KEY
+    }
+  })
+);
+&nbsp;
+async function <span class="fstat-no" title="function not covered" >index(</span>req, res) {
+  const bookings = <span class="cstat-no" title="statement not covered" >await BookingModel.find().catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    res.status(500).send(err)</span>
+  );
+<span class="cstat-no" title="statement not covered" >  return res.json(bookings);</span>
+}
+&nbsp;
+async function create(req, res) {
+  const {
+    date,
+    bookingDate,
+    firstName,
+    lastName,
+    email,
+    details,
+    status,
+    paid
+  } = req.body;
+&nbsp;
+  const booking = await BookingModel.create({
+    date,
+    bookingDate,
+    firstName,
+    lastName,
+    email,
+    details,
+    status,
+    paid
+  }).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(500).send(err))</span>;
+&nbsp;
+  //bookng email sent to admin
+  await transporter.sendMail({
+    to: [
+      "johnrubio93@gmail.com",
+      "kensukeshibata@gmail.com",
+      "josephine.yt.chong@gmail.com",
+      "nathanielmorales01@gmail.com"
+    ],
+    from: email,
+    subject: "Booking Pending",
+    html: "&lt;h1&gt;A booking has been made please confirm!&lt;/h1&gt;",
+    priority: "high"
+  });
+  //bookng email sent to user
+  await transporter.sendMail({
+    to: [
+      "johnrubio93@gmail.com",
+      "kensukeshibata@gmail.com",
+      "josephine.yt.chong@gmail.com",
+      "nathanielmorales01@gmail.com"
+    ],
+    from: "dog@trainer.com",
+    subject: "Booking Sent",
+    html: "&lt;h1&gt;Your booking has been sent!&lt;/h1&gt;",
+    priority: "high"
+  });
+&nbsp;
+  console.log("Booking created", booking);
+  // return res.json(booking);
+  res.send(200, { message: "ok" });
+}
+&nbsp;
+async function <span class="fstat-no" title="function not covered" >show(</span>req, res) {
+  const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
+&nbsp;
+  const booking = <span class="cstat-no" title="statement not covered" >await BookingModel.findById(id).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    res.status(500).send(err)</span>
+  );
+<span class="cstat-no" title="statement not covered" >  return res.json(booking);</span>
+}
+&nbsp;
+async function <span class="fstat-no" title="function not covered" >destroy(</span>req, res) {
+  let { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  await BookingModel.findByIdAndRemove(id).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    res.status(500).send(err)</span>
+  );
+<span class="cstat-no" title="statement not covered" >  res.json(await BookingModel.find());</span>
+}
+&nbsp;
+async function <span class="fstat-no" title="function not covered" >edit(</span>req, res) {
+  const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
+&nbsp;
+  const booking = <span class="cstat-no" title="statement not covered" >await BookingModel.findById(id).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    res.status(500).send(err)</span>
+  );
+<span class="cstat-no" title="statement not covered" >  return res.json(booking);</span>
+}
+&nbsp;
+async function <span class="fstat-no" title="function not covered" >update(</span>req, res) {
+  const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
+  const {
+    bookingDate,
+    firstName,
+    lastName,
+    email,
+    details,
+    status,
+    paid
+  } = <span class="cstat-no" title="statement not covered" >req.body;</span>
+  const query = <span class="cstat-no" title="statement not covered" >{ _id: id };</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  await BookingModel.updateOne(query, {</span>
+    $set: {
+      bookingDate,
+      firstName,
+      lastName,
+      email,
+      details,
+      status,
+      paid
+    }
+  }).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(500).send(err))</span>;
+<span class="cstat-no" title="statement not covered" >  return res.json(await BookingModel.findById(id));</span>
+}
+&nbsp;
+//retrieves all confirmed bookings and creates object counting how many on each date
+async function <span class="fstat-no" title="function not covered" >getConfirmed(</span>req, res) {
+  const bookings = <span class="cstat-no" title="statement not covered" >await BookingModel.find({ status: "Confirmed" }).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    res.status(500).send(err)</span>
+  );
+&nbsp;
+  let count = <span class="cstat-no" title="statement not covered" >bookings.reduce(<span class="fstat-no" title="function not covered" >(a</span>cc, obj) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    if (!acc[obj.bookingDate]) {</span>
+<span class="cstat-no" title="statement not covered" >      acc[obj.bookingDate] = 1;</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      acc[obj.bookingDate]++;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    return acc;</span>
+  }, {});
+<span class="cstat-no" title="statement not covered" >  return res.json(count);</span>
+}
+&nbsp;
+//confirms a booking
+async function <span class="fstat-no" title="function not covered" >confirm(</span>req, res) {
+  const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
+  const query = <span class="cstat-no" title="statement not covered" >{ _id: id };</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  await BookingModel.updateOne(query, { $set: { status: "Confirmed" } }).catch(</span>
+<span class="fstat-no" title="function not covered" >    er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(500).send(err)</span>
+  );
+<span class="cstat-no" title="statement not covered" >  return res.json(await BookingModel.findById(id));</span>
+}
+&nbsp;
+module.exports = {
+  index,
+  create,
+  show,
+  destroy,
+  update,
+  edit,
+  getConfirmed,
+  confirm
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jul 25 2019 17:20:39 GMT+1000 (Australian Eastern Standard Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
