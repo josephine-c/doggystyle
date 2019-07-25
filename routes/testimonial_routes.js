@@ -28,25 +28,25 @@ router.get("/:id/edit", TestimonialController.edit);
 
 router.put(
   "/:id",
-  // celebrate({
-  //     body: {
-  //         author: Joi.string().required(),
-  //         body: Joi.string().email().required(),
-  //         dog: Joi.string().required(),
-  //     }
-  // }),
+  celebrate({
+    body: {
+      title: Joi.string().required(),
+      body: Joi.string().required(),
+      author: Joi.string().required()
+    }
+  }),
   TestimonialController.update
 );
 
 router.patch(
   "/:id",
-  // celebrate({
-  //     body: {
-  //         author: Joi.string().required(),
-  //         body: Joi.string().email().required(),
-  //         dog: Joi.string().required(),
-  //     }
-  // }),
+  celebrate({
+    body: {
+      title: Joi.string().required(),
+      body: Joi.string().required(),
+      author: Joi.string().required()
+    }
+  }),
   TestimonialController.update
 );
 
