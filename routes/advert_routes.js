@@ -11,7 +11,8 @@ router.post(
     body: {
       title: Joi.string().required(),
       body: Joi.string().required(),
-      image: Joi.string().required(),
+      //   image: Joi.string().required(),
+      // For future if wanting to add a photo.
       link: Joi.string().required()
     }
   }),

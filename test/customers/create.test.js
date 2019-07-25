@@ -332,7 +332,7 @@ describe("The Admin creates a new Ad", () => {
       .send({
         title: "a",
         body: "a",
-        image: "s",
+
         link: "a"
       })
       .expect(200);
@@ -346,36 +346,6 @@ describe("The Admin creates a new Ad", () => {
       .post("/advert")
       .send({
         body: "a",
-        image: "s",
-        link: "a"
-      })
-      .expect(500);
-    //expect(resBook11.body).toEqual({});
-  });
-});
-
-describe("The Admin creates a new Ad", () => {
-  it("POST /advert with valid req body", async () => {
-    await supertest(app)
-      .post("/advert")
-      .send({
-        title: "a",
-
-        image: "s",
-        link: "a"
-      })
-      .expect(500);
-    //expect(resBook11.body).toEqual({});
-  });
-});
-
-describe("The Admin creates a new Ad", () => {
-  it("POST /advert with valid req body", async () => {
-    await supertest(app)
-      .post("/advert")
-      .send({
-        title: "a",
-        body: "a",
 
         link: "a"
       })
@@ -390,9 +360,34 @@ describe("The Admin creates a new Ad", () => {
       .post("/advert")
       .send({
         title: "a",
-        body: "a",
-        image: "s",
-        link: 1
+
+        link: "a"
+      })
+      .expect(500);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+describe("The Admin creates a new Ad", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/advert")
+      .send({
+        title: "a",
+        body: "a"
+      })
+      .expect(500);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+describe("The Admin creates a new Ad", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/advert")
+      .send({
+        title: "a",
+        body: "a"
       })
       .expect(500);
     //expect(resBook11.body).toEqual({});
