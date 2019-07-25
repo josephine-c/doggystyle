@@ -46,7 +46,6 @@ async function create(req, res) {
     priority: "high"
   });
 
-  console.log("Message sent", contact);
   // res.redirect("/contact");
   return res.json(contact);
 }
@@ -55,7 +54,6 @@ async function show(req, res) {
  const { id } = req.params;
  const contact = await ContactModel.findById(id)
  .catch(err => res.status(500).send(err));
- console.log(contact);
  return res.json(contact);
 }
 

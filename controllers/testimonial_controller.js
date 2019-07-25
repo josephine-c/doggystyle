@@ -5,7 +5,6 @@ async function create(req, res) {
 
     const testimonial = await TestimonialModel.create({ title, body, author })
     .catch(err => res.status(500).send(err));
-    console.log("testimonial created", testimonial);
     res.json(testimonial);
 }
 

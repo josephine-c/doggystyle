@@ -5,40 +5,41 @@ const BookingSchema = new Schema({
         type: Date,
         default: Date.now,
         // get: val => val.toLocaleDateString()
-        // required: true
+        required: true
     },
     bookingDate: {
         type: String,
-        set: val => new Date(val).toDateString()
-        // required: true
+        //change back to date later, fix date conversion bug
+        set: val => new Date(val).toDateString(),
+        required: true
     },
     firstName: {
         type: String,
-        // required: true
+        required: true
     },
     lastName: {
         type: String,
-        // required: true
+        required: true
     },
     email: {
         type: String,
-        // required: true
+        required: true
     },
     details: {
         type: String,
-        // required: true
+        required: true
     },
     status: {
         type: String,
         enum: ["Pending", "Confirmed", "Completed", "Cancelled"],
         default: "Pending",
-        // required: true
+        required: true
     },
     paid: {
         type: Boolean,
         default: false,
-        set: val => val === "true"
-        // required: true
+        set: val => val === "true",
+        required: true
     }
 });
 

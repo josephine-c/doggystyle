@@ -14,6 +14,7 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
+    console.log("erererwwre");
     const { 
         date,
         bookingDate,
@@ -65,9 +66,8 @@ async function create(req, res) {
         priority: "high"
     });
 
-        console.log("Booking created", booking);
         // return res.json(booking);
-        res.send(200, { message: "ok" });
+        res.status(200).send({ message: "ok" })
 }
 
 async function show(req, res) {

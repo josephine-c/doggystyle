@@ -17,7 +17,6 @@ async function create(req, res) {
            }
     ).catch(err => res.status(500).send(err));
    
-    console.log("Advert post created", advertPost);
     return res.json(advertPost);
 }
 
