@@ -92,7 +92,15 @@
 47
 48
 49
-50</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+50
+51
+52
+53
+54
+55
+56
+57
+58</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -114,21 +122,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,7 +145,19 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const express = require("express");
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const express = require("express");
 const router = express.Router();
 const { celebrate, Joi } = require("celebrate");
 const auth = require("../middleware/auth_middleware");
@@ -149,15 +165,19 @@ const TestimonialController = require("./../controllers/testimonial_controller")
 &nbsp;
 router.get("/", TestimonialController.index);
 &nbsp;
-router.post("/", 
-    // celebrate({
-    //     body: {
-    //         author: Joi.string().required(),
-    //         body: Joi.string().email().required(),
-    //         dog: Joi.string().required(),
-    //     }
-    // }), 
-    TestimonialController.create);
+router.post(
+  "/",
+  celebrate({
+    body: {
+      author: Joi.string().required(),
+      body: Joi.string()
+        .email()
+        .required(),
+      dog: Joi.string().required()
+    }
+  }),
+  TestimonialController.create
+);
 &nbsp;
 // router.get("/:id/approve", TestimonialController.approveToggle);
 &nbsp;
@@ -167,36 +187,40 @@ router.get("/:id", TestimonialController.show);
 &nbsp;
 router.get("/:id/edit", TestimonialController.edit);
 &nbsp;
-router.put("/:id", 
-    // celebrate({
-    //     body: {
-    //         author: Joi.string().required(),
-    //         body: Joi.string().email().required(),
-    //         dog: Joi.string().required(),
-    //     }
-    // }), 
-    TestimonialController.update);
+router.put(
+  "/:id",
+  // celebrate({
+  //     body: {
+  //         author: Joi.string().required(),
+  //         body: Joi.string().email().required(),
+  //         dog: Joi.string().required(),
+  //     }
+  // }),
+  TestimonialController.update
+);
 &nbsp;
-router.patch("/:id", 
-    // celebrate({
-    //     body: {
-    //         author: Joi.string().required(),
-    //         body: Joi.string().email().required(),
-    //         dog: Joi.string().required(),
-    //     }
-    // }), 
-    TestimonialController.update);          
+router.patch(
+  "/:id",
+  // celebrate({
+  //     body: {
+  //         author: Joi.string().required(),
+  //         body: Joi.string().email().required(),
+  //         dog: Joi.string().required(),
+  //     }
+  // }),
+  TestimonialController.update
+);
 &nbsp;
 router.delete("/:id", TestimonialController.destroy);
 &nbsp;
-&nbsp;
-module.exports = router;</pre></td></tr>
+module.exports = router;
+&nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jul 25 2019 15:59:52 GMT+1000 (Australian Eastern Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jul 25 2019 16:46:06 GMT+1000 (Australian Eastern Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

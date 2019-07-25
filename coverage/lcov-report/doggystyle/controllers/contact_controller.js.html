@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">24.24% </span>
+        <span class="strong">33.33% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>8/33</span>
+        <span class='fraction'>11/33</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>1/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">24.24% </span>
+        <span class="strong">33.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>8/33</span>
+        <span class='fraction'>11/33</span>
       </div>
     </div>
   </div>
@@ -143,7 +143,10 @@
 98
 99
 100
-101</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+101
+102
+103
+104</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -158,8 +161,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -183,7 +186,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -191,22 +194,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -215,6 +212,15 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -256,10 +262,10 @@ const transporter = nodemailer.createTransport(
 &nbsp;
 //needs to return json to react client or a jwt, authentication can be done with cors and jwt in auth header from client end
 async function <span class="fstat-no" title="function not covered" >index(</span>req, res) {
- const contacts = <span class="cstat-no" title="statement not covered" >await ContactModel.find()</span>
- .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(500).send(err))</span>;
-<span class="cstat-no" title="statement not covered" > return res.json(contacts);</span>
-&nbsp;
+  const contacts = <span class="cstat-no" title="statement not covered" >await ContactModel.find().catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    res.status(500).send(err)</span>
+  );
+<span class="cstat-no" title="statement not covered" >  return res.json(contacts);</span>
 }
 &nbsp;
 async function create(req, res) {
@@ -283,7 +289,7 @@ async function create(req, res) {
     priority: "high"
   });
   //enquires email sent to user
-<span class="cstat-no" title="statement not covered" >  await transporter.sendMail({</span>
+  await transporter.sendMail({
     to: email,
     from: "dog@trainer.com",
     subject: "Enquiry/Comment has been Sent",
@@ -291,46 +297,49 @@ async function create(req, res) {
     priority: "high"
   });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  console.log("Message sent", contact);</span>
+  console.log("Message sent", contact);
   // res.redirect("/contact");
-<span class="cstat-no" title="statement not covered" >  return res.json(contact);</span>
+  return res.json(contact);
 }
 &nbsp;
 async function <span class="fstat-no" title="function not covered" >show(</span>req, res) {
- const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
- const contact = <span class="cstat-no" title="statement not covered" >await ContactModel.findById(id)</span>
- .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(500).send(err))</span>;
-<span class="cstat-no" title="statement not covered" > console.log(contact);</span>
-<span class="cstat-no" title="statement not covered" > return res.json(contact);</span>
+  const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
+  const contact = <span class="cstat-no" title="statement not covered" >await ContactModel.findById(id).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    res.status(500).send(err)</span>
+  );
+<span class="cstat-no" title="statement not covered" >  console.log(contact);</span>
+<span class="cstat-no" title="statement not covered" >  return res.json(contact);</span>
 }
 &nbsp;
 async function <span class="fstat-no" title="function not covered" >destroy(</span>req, res) {
- let { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
-<span class="cstat-no" title="statement not covered" > await ContactModel.findByIdAndRemove(id)</span>
- .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(500).send(err))</span>;
-<span class="cstat-no" title="statement not covered" > res.redirect("/contact");</span>
+  let { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
+<span class="cstat-no" title="statement not covered" >  await ContactModel.findByIdAndRemove(id).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    res.status(500).send(err)</span>
+  );
+<span class="cstat-no" title="statement not covered" >  res.redirect("/contact");</span>
 }
 &nbsp;
 async function <span class="fstat-no" title="function not covered" >update(</span>req, res) {
- const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
- const contact = <span class="cstat-no" title="statement not covered" >await ContactModel.findById(id)</span>
- .catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(500).send(err))</span>;
-<span class="cstat-no" title="statement not covered" > return res.json(contact);</span>
+  const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
+  const contact = <span class="cstat-no" title="statement not covered" >await ContactModel.findById(id).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt;</span>
+<span class="cstat-no" title="statement not covered" >    res.status(500).send(err)</span>
+  );
+<span class="cstat-no" title="statement not covered" >  return res.json(contact);</span>
 }
 &nbsp;
 async function <span class="fstat-no" title="function not covered" >edit(</span>req, res) {
- const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
- let query = <span class="cstat-no" title="statement not covered" >{ _id: id };</span>
- const contact = <span class="cstat-no" title="statement not covered" >await ContactModel.update(query, {</span>
-   $set: {
-     name,
-     email,
-     phone,
-     suburb,
-     dogDetails,
-     details
-   }
- }).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(500).send(err))</span>;
+  const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
+  let query = <span class="cstat-no" title="statement not covered" >{ _id: id };</span>
+  const contact = <span class="cstat-no" title="statement not covered" >await ContactModel.update(query, {</span>
+    $set: {
+      name,
+      email,
+      phone,
+      suburb,
+      dogDetails,
+      details
+    }
+  }).catch(<span class="fstat-no" title="function not covered" >er</span>r =&gt; <span class="cstat-no" title="statement not covered" >res.status(500).send(err))</span>;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return res.json(contact);</span>
 }
@@ -349,7 +358,7 @@ module.exports = {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jul 25 2019 15:59:52 GMT+1000 (Australian Eastern Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Jul 25 2019 16:46:06 GMT+1000 (Australian Eastern Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

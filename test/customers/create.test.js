@@ -1,8 +1,8 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
 const supertest = require("supertest");
 const app = require("./../../app");
-const dotenv = require("dotenv");
 
 beforeAll(() => {
   mongoose.connect("mongodb://localhost/deployment_test", {
@@ -152,6 +152,8 @@ describe("The user creates a new enquiry", () => {
     expect(resContact8.body).toEqual({});
   });
 });
+
+// Bookings Tests
 
 describe("The user creates a new booking", () => {
   it("POST /bookings with valid req body", async () => {
@@ -317,6 +319,208 @@ describe("The user creates a new booking", () => {
         bookingDate: "Mon Jul 22 2019"
       })
       .expect(200);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+// Advert test
+
+describe("The Admin creates a new Ad", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/advert")
+      .send({
+        title: "a",
+        body: "a",
+        image: "s",
+        link: "a"
+      })
+      .expect(200);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+describe("The Admin creates a new Ad", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/advert")
+      .send({
+        body: "a",
+        image: "s",
+        link: "a"
+      })
+      .expect(500);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+describe("The Admin creates a new Ad", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/advert")
+      .send({
+        title: "a",
+
+        image: "s",
+        link: "a"
+      })
+      .expect(500);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+describe("The Admin creates a new Ad", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/advert")
+      .send({
+        title: "a",
+        body: "a",
+
+        link: "a"
+      })
+      .expect(500);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+describe("The Admin creates a new Ad", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/advert")
+      .send({
+        title: "a",
+        body: "a",
+        image: "s",
+        link: 1
+      })
+      .expect(500);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+// Blogs
+
+describe("The Admin creates a new Blog", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/blog")
+      .send({
+        title: "a",
+        body: "a",
+        tags: "a"
+      })
+      .expect(200);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+describe("The Admin creates a new Blog", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/blog")
+      .send({
+        body: "a",
+        tags: "a"
+      })
+      .expect(500);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+describe("The Admin creates a new Blog", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/blog")
+      .send({
+        title: "a",
+
+        tags: "a"
+      })
+      .expect(500);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+describe("The Admin creates a new Blog", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/blog")
+      .send({
+        title: "a",
+        body: "a"
+      })
+      .expect(500);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+// Testimonials
+
+describe("The Admin creates a new Blog", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/testimonials")
+      .send({
+        author: "a",
+        body: "a@test.com",
+        dog: "a"
+      })
+      .expect(200);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+describe("The Admin creates a new Blog", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/testimonials")
+      .send({
+        body: "a@test.com",
+        dog: "a"
+      })
+      .expect(500);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+describe("The Admin creates a new Blog", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/testimonials")
+      .send({
+        author: "a",
+        body: "a",
+        dog: "a"
+      })
+      .expect(500);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+describe("The Admin creates a new Blog", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/testimonials")
+      .send({
+        author: "a",
+
+        dog: "a"
+      })
+      .expect(500);
+    //expect(resBook11.body).toEqual({});
+  });
+});
+
+describe("The Admin creates a new Blog", () => {
+  it("POST /advert with valid req body", async () => {
+    await supertest(app)
+      .post("/testimonials")
+      .send({
+        author: "a",
+        body: "a@test.com"
+      })
+      .expect(500);
     //expect(resBook11.body).toEqual({});
   });
 });

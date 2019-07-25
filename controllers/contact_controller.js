@@ -11,10 +11,10 @@ const transporter = nodemailer.createTransport(
 
 //needs to return json to react client or a jwt, authentication can be done with cors and jwt in auth header from client end
 async function index(req, res) {
- const contacts = await ContactModel.find()
- .catch(err => res.status(500).send(err));
- return res.json(contacts);
-
+  const contacts = await ContactModel.find().catch(err =>
+    res.status(500).send(err)
+  );
+  return res.json(contacts);
 }
 
 async function create(req, res) {
@@ -52,40 +52,43 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
- const { id } = req.params;
- const contact = await ContactModel.findById(id)
- .catch(err => res.status(500).send(err));
- console.log(contact);
- return res.json(contact);
+  const { id } = req.params;
+  const contact = await ContactModel.findById(id).catch(err =>
+    res.status(500).send(err)
+  );
+  console.log(contact);
+  return res.json(contact);
 }
 
 async function destroy(req, res) {
- let { id } = req.params;
- await ContactModel.findByIdAndRemove(id)
- .catch(err => res.status(500).send(err));
- res.redirect("/contact");
+  let { id } = req.params;
+  await ContactModel.findByIdAndRemove(id).catch(err =>
+    res.status(500).send(err)
+  );
+  res.redirect("/contact");
 }
 
 async function update(req, res) {
- const { id } = req.params;
- const contact = await ContactModel.findById(id)
- .catch(err => res.status(500).send(err));
- return res.json(contact);
+  const { id } = req.params;
+  const contact = await ContactModel.findById(id).catch(err =>
+    res.status(500).send(err)
+  );
+  return res.json(contact);
 }
 
 async function edit(req, res) {
- const { id } = req.params;
- let query = { _id: id };
- const contact = await ContactModel.update(query, {
-   $set: {
-     name,
-     email,
-     phone,
-     suburb,
-     dogDetails,
-     details
-   }
- }).catch(err => res.status(500).send(err));
+  const { id } = req.params;
+  let query = { _id: id };
+  const contact = await ContactModel.update(query, {
+    $set: {
+      name,
+      email,
+      phone,
+      suburb,
+      dogDetails,
+      details
+    }
+  }).catch(err => res.status(500).send(err));
 
   return res.json(contact);
 }
