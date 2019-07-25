@@ -10,11 +10,9 @@ router.post(
   "/",
   celebrate({
     body: {
-      author: Joi.string().required(),
-      body: Joi.string()
-        .email()
-        .required(),
-      dog: Joi.string().required()
+      title: Joi.string().required(),
+      body: Joi.string().required(),
+      author: Joi.string().required()
     }
   }),
   TestimonialController.create

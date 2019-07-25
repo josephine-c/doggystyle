@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1564037166120" clover="3.2.0">
-  <project timestamp="1564037166120" name="All files">
+<coverage generated="1564038753934" clover="3.2.0">
+  <project timestamp="1564038753934" name="All files">
     <metrics statements="336" coveredstatements="196" conditionals="16" coveredconditionals="3" methods="68" coveredmethods="8" elements="420" coveredelements="207" complexity="0" loc="336" ncloc="336" packages="6" files="28" classes="28">
       <package name="doggystyle">
         <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -320,9 +320,9 @@
         <file name="error_handler_middleware.js" path="/Users/nathanielmorales/Desktop/mernstack_project/doggystyle/middleware/error_handler_middleware.js">
           <metrics statements="4" coveredstatements="3" conditionals="4" coveredconditionals="3" methods="1" coveredmethods="1"/>
           <line num="1" count="1" type="stmt"/>
-          <line num="2" count="28" type="cond" truecount="3" falsecount="1"/>
+          <line num="2" count="27" type="cond" truecount="3" falsecount="1"/>
           <line num="3" count="0" type="stmt"/>
-          <line num="6" count="28" type="stmt"/>
+          <line num="6" count="27" type="stmt"/>
         </file>
       </package>
       <package name="doggystyle.routes">
@@ -432,12 +432,12 @@
           <line num="5" count="1" type="stmt"/>
           <line num="7" count="1" type="stmt"/>
           <line num="9" count="1" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
           <line num="27" count="1" type="stmt"/>
           <line num="29" count="1" type="stmt"/>
-          <line num="31" count="1" type="stmt"/>
-          <line num="43" count="1" type="stmt"/>
+          <line num="41" count="1" type="stmt"/>
+          <line num="53" count="1" type="stmt"/>
           <line num="55" count="1" type="stmt"/>
-          <line num="57" count="1" type="stmt"/>
         </file>
       </package>
     </metrics>

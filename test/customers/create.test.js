@@ -462,12 +462,11 @@ describe("The Admin creates a new Blog", () => {
     await supertest(app)
       .post("/testimonials")
       .send({
-        author: "a",
+        title: "a",
         body: "a@test.com",
-        dog: "a"
+        author: "a"
       })
       .expect(200);
-    //expect(resBook11.body).toEqual({});
   });
 });
 
@@ -477,7 +476,7 @@ describe("The Admin creates a new Blog", () => {
       .post("/testimonials")
       .send({
         body: "a@test.com",
-        dog: "a"
+        author: "a"
       })
       .expect(500);
     //expect(resBook11.body).toEqual({});
@@ -489,9 +488,9 @@ describe("The Admin creates a new Blog", () => {
     await supertest(app)
       .post("/testimonials")
       .send({
-        author: "a",
-        body: "a",
-        dog: "a"
+        title: "a",
+
+        author: "a"
       })
       .expect(500);
     //expect(resBook11.body).toEqual({});
@@ -503,21 +502,7 @@ describe("The Admin creates a new Blog", () => {
     await supertest(app)
       .post("/testimonials")
       .send({
-        author: "a",
-
-        dog: "a"
-      })
-      .expect(500);
-    //expect(resBook11.body).toEqual({});
-  });
-});
-
-describe("The Admin creates a new Blog", () => {
-  it("POST /advert with valid req body", async () => {
-    await supertest(app)
-      .post("/testimonials")
-      .send({
-        author: "a",
+        title: "a",
         body: "a@test.com"
       })
       .expect(500);
